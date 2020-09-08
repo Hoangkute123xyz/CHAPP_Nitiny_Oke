@@ -10,6 +10,9 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.FrameLayout;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+
 import javax.inject.Inject;
 
 import butterknife.BindView;
@@ -138,6 +141,17 @@ public class BackableActivity extends BaseActivity implements BackableMvpView, U
     private String shopAddressPro;
 
     private Notify notify;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (!EventBus.getDefault().isRegistered(this)){
+            EventBus.getDefault().register(this);
+        }
+    }
+
+
+
 
     public static Intent newInstanceForgotPassword(Context context, String phone, int otp) {
         Intent intent = new Intent(context, BackableActivity.class);
@@ -516,6 +530,7 @@ public class BackableActivity extends BaseActivity implements BackableMvpView, U
     protected void onDestroy() {
         if (asyncTaskExecutor != null) asyncTaskExecutor.cancel(true);
         clearActivity(this, R.id.mainBackable);
+        EventBus.getDefault().unregister(this);
         super.onDestroy();
     }
 
@@ -546,5 +561,19 @@ public class BackableActivity extends BaseActivity implements BackableMvpView, U
     @Override
     public void onToolbarActionRightClick() {
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        EventBus.getDefault().post("REQUEST_FINISH_BACKABLE");
+        finish();
+    }
+
+    @Subscribe
+    public void onEvent(String e){
+        if (e.equals("REQUEST_FINISH_BACKABLE")){
+            finish();
+        }
     }
 }
