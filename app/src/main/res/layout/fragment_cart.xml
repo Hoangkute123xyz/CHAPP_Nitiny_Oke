@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rcCart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/relative1"
+        android:layout_alignParentTop="true" />
+
+    <RelativeLayout
+        android:id="@+id/relative1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:visibility="visible">
+
+        <RelativeLayout
+            android:id="@+id/relative2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true">
+
+            <CheckBox
+                android:id="@+id/chkBoxAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="Chọn tất cả" />
+
+            <View
+                android:id="@+id/line1"
+                android:layout_width="1dp"
+                android:layout_height="@dimen/size_50dp"
+                android:layout_centerVertical="true"
+                android:layout_marginHorizontal="@dimen/size_5dp"
+                android:layout_toRightOf="@id/chkBoxAll"
+                android:background="@color/colorLightGray" />
+
+            <TextView
+                android:id="@+id/tvTitleQuantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/line1"
+                android:padding="8dp"
+                android:text="Số lượng hàng: " />
+
+            <TextView
+                android:id="@+id/tvQuantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:padding="8dp"
+                tools:text="6" />
+
+            <TextView
+                android:id="@+id/tvTitleCost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvTitleQuantity"
+                android:layout_toRightOf="@+id/line1"
+                android:padding="8dp"
+                android:text="Thành tiền: " />
+
+            <TextView
+                android:id="@+id/tvCost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvQuantity"
+                android:layout_alignParentEnd="true"
+                android:padding="8dp"
+                android:textColor="@color/colorFF8800"
+                android:textStyle="bold"
+                tools:text="666.666 đ" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btnPayment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relative2"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="-2dp"
+            android:background="@color/color3A3A3A"
+            android:text="Đặt mua"
+            android:textColor="@android:color/white" />
+    </RelativeLayout>
+
+</RelativeLayout>

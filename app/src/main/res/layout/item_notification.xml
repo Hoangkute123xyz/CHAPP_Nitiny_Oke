@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/size_6dp"
+    android:layout_marginBottom="@dimen/size_6dp"
+    app:cardCornerRadius="@dimen/size_6dp"
+    tools:ignore="MissingPrefix">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/size_4dp">
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cartShopAvatar"
+            android:layout_width="@dimen/size_55dp"
+            android:layout_height="@dimen/size_55dp"
+            android:layout_margin="@dimen/size_4dp"
+            android:elevation="@dimen/size_6dp"
+            app:cardCornerRadius="@dimen/size_30dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imgIcon"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@null"
+                android:src="@drawable/avb_logo" />
+        </android.support.v7.widget.CardView>
+
+        <ImageView
+            android:id="@+id/ivDiamond"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/size_2dp"
+            android:layout_marginBottom="@dimen/size_10dp"
+            android:src="@drawable/ic_diamond_large"
+            app:layout_constraintBottom_toBottomOf="@id/cartShopAvatar"
+            app:layout_constraintEnd_toEndOf="@id/cartShopAvatar" />
+
+        <View
+            android:id="@+id/vLine"
+            android:layout_width="1px"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/size_13dp"
+            android:background="@color/colorE6E6E6"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@id/cartShopAvatar"
+            app:layout_constraintStart_toEndOf="@id/ivDiamond"
+            app:layout_constraintTop_toTopOf="@id/cartShopAvatar" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideLineEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="@dimen/size_90dp" />
+
+        <TextView
+            android:id="@+id/tvDateTime"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size_8dp"
+            android:drawablePadding="@dimen/size_5dp"
+            android:gravity="end"
+            android:maxLines="1"
+            android:textSize="@dimen/text_size_10sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideLineEnd"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="10.09.2019" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size_10dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textAllCaps="true"
+            android:textSize="@dimen/text_size_12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/guideLineEnd"
+            app:layout_constraintStart_toEndOf="@id/vLine"
+            tools:ignore="MissingConstraints"
+            tools:text="Mã Hàng" />
+
+        <TextView
+            android:id="@+id/tvContent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size_10dp"
+            android:layout_marginTop="@dimen/size_8dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="@color/color808080"
+            android:textSize="@dimen/text_size_12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/vLine"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle"
+            tools:text="Tại cuộc họp của Ban Chỉ đạo Quốc gia phòng chống dịch COVID-19 sáng ngày 3/9 do Phó Thủ tướng Chính phủ Vũ Đức Đam- Trưởng Ban Chỉ đạo chủ trì..." />
+    </android.support.constraint.ConstraintLayout>
+</LinearLayout>
