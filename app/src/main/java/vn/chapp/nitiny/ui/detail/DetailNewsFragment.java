@@ -89,7 +89,7 @@ public class DetailNewsFragment extends BaseFragment implements DetailNewsFrMvpV
             listNewsDetailAdapter.replaceData(backup);
         }
         listNewsDetailAdapter.setOnItemClickListener((position)->{
-            onClickViewDetailNewPaper(position, listNewsDetailAdapter.getCollection().get(position), BackableActivity.NAVIGATOR_DETAIL_PROMOTION);
+            onClickViewDetailNewPaper(position, listNewsDetailAdapter.getCollection().get(position), BackableActivity.NAVIGATOR_DETAIL_NEWS_PAPER);
         });
     }
 

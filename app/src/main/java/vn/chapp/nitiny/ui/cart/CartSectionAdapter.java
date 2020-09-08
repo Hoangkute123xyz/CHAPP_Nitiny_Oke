@@ -17,8 +17,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -112,7 +110,12 @@ public class CartSectionAdapter extends SectionedRecyclerViewAdapter<SectionedVi
             rbCart.setChecked(carts.get(section).isChoose());
 
 
+
             rbCart.setOnClickListener(v -> {
+                for (int i = 0 ; i<carts.size();i++){
+                    carts.get(i).setChoose(i==section);
+                }
+                notifyDataSetChanged();
                 if (onItemCartClickListener != null)
                     onItemCartClickListener.onChangeShop(section);
             });
@@ -147,7 +150,7 @@ public class CartSectionAdapter extends SectionedRecyclerViewAdapter<SectionedVi
             ButterKnife.bind(this, itemView);
             this.myCustomEditTextListener = myCustomEditTextListener;
         }
-    
+
         public CartViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
@@ -245,22 +248,22 @@ public class CartSectionAdapter extends SectionedRecyclerViewAdapter<SectionedVi
                         alertDialog.show();
                     }
             });
-            
+
             myCustomEditTextListener.updatePosition(section, relativePosition, cartProduct.getProductId());
             edtCount.setOnEditorActionListener(myCustomEditTextListener);
-            
-            
-            //Thêm: code chức năng khi tích vào từng item
-            cbCheck.setChecked(cartProduct.isChoose());
-            cbCheck.setEnabled(cartProduct.isChoose());
 
-            cbCheck.setOnCheckedChangeListener((buttonView, isChecked) -> {
-                cartProduct.setChoose(isChecked);
-                carts.get(section).getProduct().get(relativePosition).setChoose(isChecked);
-                Log.e("cartProduct", new Gson().toJson(cartProduct));
-                Log.e("cart", new Gson().toJson(carts));
+
+            //Thêm: code chức năng khi tích vào từng item
+            Log.e(cartProduct.getProductName(),cartProduct.isChoose()+"");
+            cbCheck.setChecked(cartProduct.isChoose());
+            cbCheck.setEnabled(carts.get(section).isChoose());
+
+            cbCheck.setOnClickListener(v -> {
+                cartProduct.setChoose(!cartProduct.isChoose());
+                cbCheck.setChecked(cartProduct.isChoose());
+
             });
-            
+
         }
     }
 

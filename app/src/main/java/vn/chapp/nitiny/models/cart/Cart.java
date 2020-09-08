@@ -72,7 +72,7 @@ public class Cart implements Parcelable {
     public void setChoose(boolean choose) {
         isChoose = choose;
         for (CartProduct product:product){
-            product.setChoose(choose);
+            product.setChoose(isChoose);
         }
     }
 

@@ -191,18 +191,16 @@ public class CartFragment extends BaseFragment implements CartFrMvpView, CartSec
 
     @Override
     public void onChangeShop(int section) {
-        List<Cart> list = new ArrayList<>();
-
-        for (int i = 0; i < carts.size(); i++) {
-            Cart cart = carts.get(i);
-            if (i == section) {
-                cart.setChoose(true);
-            } else {
-                cart.setChoose(false);
-            }
-            list.add(cart);
-        }
-        cartSectionAdapter.replaceData(list);
+//
+//        for (int i = 0; i < carts.size(); i++) {
+//            Cart cart = carts.get(i);
+//            if (i == section) {
+//                cart.setChoose(true);
+//            } else {
+//                cart.setChoose(false);
+//            }
+//        }
+//        cartSectionAdapter.replaceData(carts);
         indexCartChoose = section;
 
         this.calculatorTotal();
@@ -246,9 +244,6 @@ public class CartFragment extends BaseFragment implements CartFrMvpView, CartSec
                 break;
             case "2":
                 price = cartProduct.getPrice2();
-                break;
-            case "3":
-                price = cartProduct.getPriceDiscount();
                 break;
             case "4":
                 price = cartProduct.getPrice3();
